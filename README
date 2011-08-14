@@ -11,6 +11,7 @@ Dependencies:
     - optipng
     - dash 
     - ompload
+    - zsh
 
 alarm {in|at} [time] {h|m|s}: an alarm clock.
     Example usage:
