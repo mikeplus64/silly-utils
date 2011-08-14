@@ -2,8 +2,8 @@
 # Toggle a process.
 #!/bin/dash
 
-if [ -n "`ps -A | grep "$1"`" ]; then
-	killall "$1"
+if pgrep $1 > /dev/null; then
+	pkill "$1"
 else
     "$@" &
 fi	
