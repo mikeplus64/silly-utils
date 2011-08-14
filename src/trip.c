@@ -11,7 +11,7 @@ int main(int argc, char **argv)
     int offs = 0;
     int incr = 1;
     int Trippin = 1;
-    if (!SDL_Init(SDL_INIT_VIDEO))
+    if (SDL_Init(SDL_INIT_VIDEO))
     {
         printf("you are a horrible person and I hate you\n");
         return 1;
