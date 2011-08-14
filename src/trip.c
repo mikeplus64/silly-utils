@@ -12,6 +12,11 @@ int main(int argc, char **argv)
     int incr = 1;
     int Trippin = 1;
     SDL_Init(SDL_INIT_VIDEO);
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+    {
+        printf("you are a horrible person and I hate you\n");
+        return 1;
+    }
     SDL_Surface* screen = SDL_SetVideoMode( WINDOW_WIDTH, WINDOW_HEIGHT, 0, 
             SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
     SDL_WM_SetCaption( WINDOW_TITLE, 0 );
