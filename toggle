@@ -3,7 +3,7 @@
 #!/bin/dash
 
 if [ -n "`ps -A | grep "$1"`" ]; then
-	killall "$1" &
+	killall "$1"
 else
     "$@" &
 fi	
