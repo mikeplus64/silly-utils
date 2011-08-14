@@ -1,6 +1,5 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_gfxPrimitives.h>
-#include <math.h>
 
 const int WINDOW_WIDTH = 1024;
 const int WINDOW_HEIGHT = 600;

@@ -1,3 +1,4 @@
+# Silly Utilities: alarm
 #!/bin/dash
 
 main () {
