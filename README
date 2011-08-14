@@ -1,6 +1,17 @@
 Silly utilities, by Mike Ledger.
 Put them in your $PATH to use them properly.
 
+Dependencies:
+    - GNU coreutils
+    - X (for flashing, panic and trip) although some other display method that
+      SDL supports would
+      work fine too.
+    - SDL
+    - SDL_gfx
+    - optipng
+    - dash 
+    - ompload
+
 alarm {in|at} [time] {h|m|s}: an alarm clock.
     Example usage:
         alarm in 3 s

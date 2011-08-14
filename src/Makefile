@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-O3
 LDFLAGS=-lSDL -lSDL_gfx
-DEST=../bin
+DEST=..
 
 all: flashing trip panic
 
@@ -18,4 +18,4 @@ panic:
 	mv panic $(DEST)
 
 clean:
-	rm ../bin/panic ../bin/trip ../bin/flashing
+	rm $(DEST)/panic $(DEST)/trip $(DEST)/flashing
