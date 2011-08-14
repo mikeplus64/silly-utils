@@ -8,7 +8,7 @@ main () {
         while [ -n 1 ]; do
             /bin/echo -ne "\a"
             sleep 0.1s
-            if [ -z "`ps -A | grep flashing`" ]; then
+            if pgrep flashing > /dev/null then
                 exit
             fi
         done
