@@ -1,0 +1,11 @@
+# Silly Utilities: magicshot
+# Take a screenshot, optimise it, upload it, describe it, list it!
+#!/bin/dash
+FILENAME="`date +%d%m%Y-%H%M%S.png`"
+DEST="/home/oupk/pictures/screenshots"
+echo "Taking screenshot."
+scrot "$DEST/$FILENAME"
+echo "Optimising png..."
+optipng "$DEST/$FILENAME" > /dev/null
+export DEST FILENAME
+urxvt -e magicalshot

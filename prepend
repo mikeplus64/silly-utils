@@ -1,0 +1,14 @@
+# Silly Utilities: prepend
+# Prepend something to the start of a file.
+#!/bin/dash
+
+echo "Filename: "
+read FILE
+echo "String: "
+read STRING
+STRING="$STRING
+"
+
+if [ -f "$FILE" ]; then
+    echo "$STRING`cat "$FILE"`" > "$FILE"
+fi

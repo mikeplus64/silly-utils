@@ -1,0 +1,10 @@
+# Silly Utilities: magicalshot
+# Used by magicshot.
+# Do not run manually.
+#!/bin/dash
+echo "Enter a description:"
+read DESC
+echo "$DESC	 $FILENAME -> http:`ompload "$DEST/$FILENAME" -u -n 2> /dev/null | cut -d: -f2`" >> "$DEST/links"
+tail -n1 "$DEST/links"
+echo "Press enter to close this window."
+read DERP

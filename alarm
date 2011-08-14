@@ -1,0 +1,91 @@
+#!/bin/dash
+
+main () {
+    beeper () {
+        xset dpms force on
+        flashing &> /dev/null
+        while [ -n 1 ]; do
+            /bin/echo -ne "\a"
+            sleep 0.1s
+            if [ -z "`ps -A | grep flashing`" ]; then
+                exit
+            fi
+        done
+    }
+
+    STARTTIME="`date +%R:%S`"
+    ENDTIME="$1"
+    echo "Started: 	$STARTTIME"
+    echo "Panicing at: 	$ENDTIME"
+    CURRENTTIME="`date +%R:%S`"
+    /bin/echo -ne "Current time:\t$CURRENTTIME"
+    /bin/echo -ne \\b\\b\\b\\b\\b\\b\\b\\b
+    while [ "$CURRENTTIME" != "$ENDTIME" ]; do
+        sleep 1s
+        CURRENTTIME="`date +%R:%S`"
+        /bin/echo -ne `date +%H:%M:%S`\\b\\b\\b\\b\\b\\b\\b\\b
+    done
+    beeper
+}
+
+
+gettargettime() {
+    addhours() {
+        CURRENTHOURS="`date +%H`"
+        echo `expr $CURRENTHOURS + $1`
+    }
+
+    addminutes() {
+        CURRENTMINUTES="`date +%M`"
+        echo `expr $CURRENTMINUTES + $1`
+    }
+
+    addseconds() {
+        CURRENTSECONDS="`date +%S`"
+        echo `expr $CURRENTSECONDS + $1`
+    }
+
+    case "$2" in
+        h)  
+            SECONDS=`date +%S`
+            MINUTES=`date +%M`
+            HOURS=`addhours "$1"`
+            ;;
+        m) 
+            SECONDS=`date +%S`
+            MINUTES=`addminutes "$1"`
+            HOURS=`date +%H`
+            ;;
+        s) 
+            SECONDS=`addseconds "$1"`
+            MINUTES=`date +%M`
+            HOURS=`date +%H`
+            ;;
+    esac
+
+    while [ $HOURS -ge 24 ] || [ $MINUTES -ge 60 ] || [ $SECONDS -ge  60 ]; do
+        if [ $HOURS -ge 24 ]; then
+            HOURS=`expr $HOURS - 24`
+        fi
+        if [ $MINUTES -ge 60 ]; then
+            HOURS=`expr $HOURS + 1`
+            MINUTES=`expr $MINUTES - 60`
+        fi
+        if [ $SECONDS -ge 60 ]; then
+            MINUTES=`expr $MINUTES + 1`
+            SECONDS=`expr $SECONDS - 60`
+        fi
+    done
+
+    SECONDS=`printf "%.2d" "$SECONDS"`
+    MINUTES=`printf "%.2d" "$MINUTES"`
+    HOURS=`printf "%.2d" "$HOURS"`
+
+    echo "$HOURS:$MINUTES:$SECONDS"
+}
+
+case "$1" in
+    in) main `gettargettime $2 $3` ;;
+    at) main "$2" ;;
+    *)  echo "Usage: $0 {in|at} time {h|m|s}" ;;
+esac

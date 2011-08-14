@@ -1,0 +1,5 @@
+# Silly Utilities: xarchive
+# xarchiver for files downloaded by a web browser (eg Firefox)
+#!/bin/sh
+
+xarchiver `rpath "$@"`

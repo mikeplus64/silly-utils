@@ -1,0 +1,23 @@
+# Silly Utilities: lidwatch
+# Check if the lid is closed.
+#!/bin/dash
+
+cd /proc/acpi/button/lid/LID
+STATE=on
+TIMER=0
+
+while [ -n 1 ]; do
+    if [ -n "`grep closed state`" ]; then
+        xset dpms force off
+        STATE="off"
+        #TIMER=`expr $TIMER + 1`
+        #if [ $TIMER = 240 ]; then
+        #    shrs suspend
+        #    TIMER=0
+        #fi
+    elif [ "$STATE" = "off" ]; then
+        xset dpms force on
+        STATE="on"
+    fi
+    sleep 1s;
+done 

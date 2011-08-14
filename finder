@@ -1,0 +1,17 @@
+# Silly Utilities: finder
+# Find strings in filenames, foldernames and files.
+#!/bin/dash
+
+findthis="$@"
+
+find . | while read file; do
+    strings="`strings $file | grep -i "$findthis"`"
+    filen="`echo $file | grep -i "$findthis"`"
+    if [ -n "$filen" ]; then
+        echo "\e[1;34m--> \e[0;33m$file"
+    fi
+    if [ -n "$strings" ]; then
+        echo "\e[1;34m--> \e[0;33m$file"
+        echo "\e[0m$strings"
+    fi
+done

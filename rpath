@@ -1,0 +1,6 @@
+# Silly Utilities: rpath
+# Remove "file://" from URIs.
+#!/bin/dash
+
+rpath="`echo "$@" | sed 's/^file:\/\///'`"
+echo "$rpath"

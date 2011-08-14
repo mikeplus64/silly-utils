@@ -1,0 +1,10 @@
+# Silly Utilities: foornt
+# Check if a file is open.
+#!/bin/sh
+
+FILE_OPEN=`lsof | grep "$1"`
+if [ -z "$FILE_OPEN" ] ;then
+    echo "$1 is not open."
+else
+    echo "$1 is open."
+fi

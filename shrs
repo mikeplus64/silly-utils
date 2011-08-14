@@ -1,0 +1,15 @@
+# Silly Utilities: shrs
+# non-root shutting down, suspending, rebooting and hibernating
+#!/bin/dash
+case "$1" in
+    halt|shutdown)
+        dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop ;;
+    suspend)
+        dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend ;;
+    hibernate)
+        dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate ;;
+    restart|reboot)
+        dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart ;;
+    *)
+        echo "NOPE." ;;
+esac
