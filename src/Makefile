@@ -16,3 +16,6 @@ trip:
 panic: 
 	$(CC) panic.c $(CFLAGS) $(LDFLAGS) -o panic
 	mv panic $(DEST)
+
+clean:
+	rm ../bin/panic ../bin/trip ../bin/flashing
