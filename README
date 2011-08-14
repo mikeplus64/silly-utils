@@ -1,2 +1,40 @@
 Silly utilities, by Mike Ledger.
 Put them in your $PATH to use them properly.
+
+alarm {in|at} [time] {h|m|s}: an alarm clock.
+    Example usage:
+        alarm in 3 s
+    Sets the alarm to ring in 3 seconds.
+        alarm in 6 h
+    Sets the alarm to ring in 6 hours.
+        alarm at 06:00:00
+    Sets the alarm for 6 AM. The times it accepts are in 24 hour format.
+
+finder [string]: finds strings in files/folders/names.
+
+foornt [file]: checks if a file is open.
+
+lidwatch: a daemon to turn the screen on/off depending on whether the lid is
+open or closed.
+
+magicalshot: used by magicshot. Don't run this manually.
+
+magicshot: screenshot utility. It will take a screenshot, optimise the png of
+it, get a description of the screenshot, upload it to ompldr.org using ompload
+and then save the description, link and filename to a file for later usage.
+
+prepend [string]: prepend a string to a file.
+
+rpath [file:///blahblah]: remove the file:// from the argument
+
+shrs {suspend|shutdown|halt|reboot|restart|hibernate}: shutdown, hibernate,
+reboot and suspend without being root.
+
+toggle [process]: "toggles" the running of a process. 
+    Example usage:
+        toggle xcompmgr -c -t-5 -l-5 -r4.2 -o.65
+    If xcompmgr is running, toggle will kill it. If not, it will run it
+    (arguments are preserved)
+
+xarchive: use this for xarchiver + firefox. Firefox gives applications file:///
+URIs and xarchiver and other applications don't know what to do with that.
