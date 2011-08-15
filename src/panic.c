@@ -23,6 +23,7 @@ int main(int argc, char **argv)
     SDL_WM_SetCaption( WINDOW_TITLE, 0 );
     SDL_Event event;
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+    SDL_ShowCursor(0);
 
     while (Trippin == 1)
     {
