@@ -11,4 +11,6 @@ STRING="$STRING
 
 if [ -f "$FILE" ]; then
     echo "$STRING`cat "$FILE"`" > "$FILE"
+else
+    echo "$FILE doesn't exist, and you are silly."
 fi
