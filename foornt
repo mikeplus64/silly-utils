@@ -1,10 +1,9 @@
 # Silly Utilities: foornt
 # Check if a file is open.
-#!/bin/sh
+#!/bin/dash
 
-FILE_OPEN=`lsof | grep "$1"`
-if [ -z "$FILE_OPEN" ] ;then
-    echo "$1 is not open."
-else
+if (lsof | grep -q $1) && ! (lsof | grep -q $1 | grep -q "(deleted)"); then
     echo "$1 is open."
+else
+    echo "$1 is not open."
 fi
